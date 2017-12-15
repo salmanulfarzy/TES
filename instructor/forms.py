@@ -1,7 +1,12 @@
 from django import forms
 
-RADIO_CHOICE = [ (i, i) for i in range(1,9) ]
+RADIO_CHOICE = [
+    (2, 'Very Good'), (1, 'Good'), (0, 'Okay'),
+    (-1, 'Bad'), (-2, 'Very Bad')
+]
+
 
 class FeedbackForm(forms.Form):
-    comments = forms.CharField(widget=forms.Textarea)
-    radio = forms.ChoiceField(widget=forms.RadioSelect(), choices=RADIO_CHOICE)
+    review = forms.ChoiceField(widget=forms.RadioSelect(),
+                               label='Question',
+                               choices=RADIO_CHOICE)
