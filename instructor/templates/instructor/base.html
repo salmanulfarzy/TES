@@ -1,12 +1,15 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Instrutor Evaluation</title>
-  </head>
-  <body>
-    Hey There. We're going to display the questionnare here
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit" />
-  </body>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Instructor Evaluation</title>
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/base.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+</body>
 </html>

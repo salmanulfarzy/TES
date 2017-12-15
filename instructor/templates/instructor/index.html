@@ -1,0 +1,20 @@
+{% extends "instructor/base.html" %}
+
+{% block content %}
+    <h3>Welcome, User</h3>
+    {% csrf_token %}
+    <div class="form-group row">
+        <label for="Q1" class="col-sm-5 col-form-label">Ease
+            of
+            understandability</label>
+        {% for radio in form.review %}
+            <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input"
+                           name="inlineRadioOptions"> {{ radio.choice_label }}
+                </label>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

@@ -14,5 +14,4 @@ def index(request):
     else:
         form = FeedbackForm()
 
-    return render(request, 'instructor/base.html', {'form': form})
-
+    return render(request, 'instructor/index.html', {'form': form})
