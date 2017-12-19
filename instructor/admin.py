@@ -1,8 +1,7 @@
 from django.contrib import admin
 
-from instructor.models import Users, Roles, Classes, Courses
+from instructor.models import Courses, Questions, Feedback
 
-admin.site.register(Users)
-admin.site.register(Roles)
-admin.site.register(Classes)
 admin.site.register(Courses)
+admin.site.register(Questions)
+admin.site.register(Feedback)
