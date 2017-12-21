@@ -1,17 +1,18 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
+from .models import Questions
 from .forms import FeedbackForm
 
 
 def index(request):
+    questions = Questions.objects.all()
+
     if request.method == 'POST':
-        #  create a form instance and populate it with request data
         form = FeedbackForm(request.POST)
         if form.is_valid():
-            # process the data in form as required
-            return HttpResponseRedirect('/')
+            form.save()
     else:
         form = FeedbackForm()
 
-    return render(request, 'instructor/index.html', {'form': form})
+    context = {'form': form, 'questions': questions}
+    return render(request, 'instructor/index.html', context)

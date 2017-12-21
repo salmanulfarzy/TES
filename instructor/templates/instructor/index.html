@@ -1,20 +1,33 @@
 {% extends "instructor/base.html" %}
 
 {% block content %}
-    <h3>Welcome, User</h3>
-    {% csrf_token %}
-    <div class="form-group row">
-        <label for="Q1" class="col-sm-5 col-form-label">Ease
-            of
-            understandability</label>
-        {% for radio in form.review %}
+  <h3>Welcome, User</h3>
+
+  <form action="" method="post">
+    {% for question in questions %}
+      <div class="form-group row">
+        <label for="{{ question.id }}" class="col-sm-5 col-form-label" >{{ question.text }}</label>
+        <div class="col-sm-7">
+          {% for radio in form.review %}
             <div class="form-check form-check-inline">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input"
-                           name="inlineRadioOptions"> {{ radio.choice_label }}
-                </label>
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input"
+                       name="{{ question.id }}">
+                {{ radio.choice_label }}
+              </label>
             </div>
-        {% endfor %}
-    </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary float-right">Submit</button>
+  </form>
+
+  <h4>Bare form</h4>
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p() }}
+  </form>
+
 {% endblock %}
 
